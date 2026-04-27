@@ -186,7 +186,22 @@ Suggested first print set:
 Do not use a random microscope mirror as a primary telescope mirror.
 It may be useful only as a temporary fold element for experimentation, but quality/surface/coating are often unsuitable for sharp astronomical imaging.
 
-## 9) What to Improve Next
+## 9) Aberration Troubleshooting
+
+For first-build aberration diagnosis and mitigation, see:
+
+- [`aberration-analysis.md`](aberration-analysis.md)
+- [`diagnostic-script.md`](diagnostic-script.md)
+
+This includes:
+
+- likely aberration modes for the reported image pattern
+- interpretation of the 40 mm stop vs full-aperture comparison
+- a mitigation sequence (stop-down, focus, alignment, camera coupling checks)
+- a quick diagnostic matrix to separate chromatic/spherical/alignment/capture effects
+- a timed 10-minute diagnostic script with pass/fail interpretation
+
+## 10) What to Improve Next
 
 After this foundation is validated, next steps are:
 
