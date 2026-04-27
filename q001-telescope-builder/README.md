@@ -191,7 +191,36 @@ Suggested first print set:
 Do not use a random microscope mirror as a primary telescope mirror.
 It may be useful only as a temporary fold element for experimentation, but quality/surface/coating are often unsuitable for sharp astronomical imaging.
 
-## 9) Aberration Troubleshooting
+## 9) Physics: why aperture and baffle sweeps improve the image
+
+This project treats light with **geometrical (ray) optics** for layout and intuition: in a uniform medium rays travel straight; at surfaces they reflect or refract. That picture is accurate when apertures and features are **large compared to the wavelength**; it explains the **imaging cone** and **stray-light paths**, but it does not replace wave optics for fine **diffraction** structure (Airy pattern, ring detail on a star).
+
+The two field scripts attack **different** mechanisms. Used in order (aperture first, then baffles), they help you pick settings that maximize **contrast and sharpness you can actually see**, not only raw aperture.
+
+### Aperture sweep ([`diagnostic-aperture-sweep.md`](diagnostic-aperture-sweep.md))
+
+The objective accepts a bundle of nearly parallel rays from a distant object. Rays that strike the lens **far from the axis** (“marginal” or **peripheral** rays) usually contribute most to **monochromatic** errors such as spherical aberration and coma, and to **chromatic** error (different colours bend by different amounts, so colour fringes grow when the full diameter is used). In a short geometrical picture: the outer annulus of the pupil is often the part of the wavefront that is least well corrected.
+
+**Stopping down** with a mask removes those outer rays. The effective diameter `D_stop` shrinks, so the **f-number** `f_obj / D_stop` rises: the cone of imaging rays becomes narrower. Geometrical aberrations tied to ray height typically **fall quickly** as you trim the pupil. The tradeoff is **diffraction**: the smallest detail the optics can resolve scales roughly like **λ / D** (same order as the `theta = 1.22 * lambda / D` estimate in **Optical Model Used**). A smaller `D` means a **larger** diffraction blur in angle—but on many real objectives, especially at full aperture on bright targets, **geometrical blur and colour error shrink faster than diffraction grows**, so the image **looks** sharper and cleaner until you stop so far that the view becomes too dim and diffraction-dominated.
+
+**Re-focus after each stop** because the **best-focus plane** shifts when you change which zone of the lens carries the light (spherical aberration and longitudinal chromatic aberration both move the “best” focus).
+
+So the aperture sweep **optimizes the pupil**: you find the largest diameter where halo, colour fringing, and soft edges are acceptable for your targets, instead of guessing.
+
+### Baffle sweep ([`diagnostic-baffle-sweep.md`](diagnostic-baffle-sweep.md))
+
+**Baffles do not re-shape the main imaging wavefront** from the objective. In the ray picture, they block or absorb light that would otherwise strike **tube walls, shiny edges, or the wrong parts of the eyepiece**, then scatter or reflect **into** the focal region. That light is not part of the intended cone from the object; it adds **veiling glare** (lifted fog over dark areas) and can contribute to **ghost** images when it takes a specular bounce between surfaces.
+
+Well-placed baffles narrow the range of **angles** from which the detector or eye can see **non-object** brightness. They improve **micro-contrast** and **black level** next to bright limbs or planets while leaving the **intrinsic** aberrations of the objective largely unchanged—so they complement a stop choice rather than replacing it.
+
+### Using both together
+
+1. **Aperture sweep** — reduce **lens-driven** halo, colour error, and marginal-ray blur by choosing `D_stop` (and best focus at that stop).
+2. **Baffle sweep** — reduce **tube- and stray-light–driven** veiling and ghosts at your chosen aperture.
+
+Together they separate “what the glass is doing” from “what the tube is leaking,” which is exactly the split encoded in the diagnostic protocols and the evidence table in [`aberration-analysis.md`](aberration-analysis.md).
+
+## 10) Aberration Troubleshooting
 
 For first-build aberration diagnosis and mitigation, see:
 
@@ -215,7 +244,7 @@ This includes:
 - explicit quantitative 1-5 scoring anchors (what counts as low, moderate, high)
 - an **evidence table** (image → artifacts → likely modes → confidence) in `aberration-analysis.md`
 
-## 10) What to Improve Next
+## 11) What to Improve Next
 
 After this foundation is validated, next steps are:
 
