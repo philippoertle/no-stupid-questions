@@ -19,7 +19,7 @@ Terminology: see [`optical-artifacts-glossary.md`](optical-artifacts-glossary.md
 ## Rules for clean evidence
 
 1. Change **one variable at a time** (aperture only in this script).
-2. Use **same target** for the whole sweep (planet or Moon terminator).
+2. Use **same target** for the whole sweep (planet or Moon near the [terminator](optical-artifacts-glossary.md#moon-terminator)—sunlit/night boundary).
 3. Use **same eyepiece** (25 mm) for the sweep.
 4. **Re-focus from scratch after every aperture change**.
 5. Log each step before moving on.

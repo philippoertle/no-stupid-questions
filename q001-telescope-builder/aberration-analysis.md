@@ -2,7 +2,7 @@
 
 This document captures the likely aberration modes observed in the first-build image and provides practical mitigation and test steps.
 
-If terms like **halo**, **ghost**, or **veiling** are unfamiliar, start with [`optical-artifacts-glossary.md`](optical-artifacts-glossary.md).
+If terms like **halo**, **ghost**, **veiling**, or **terminator** (the Moon’s sunlit/night boundary—see glossary) are unfamiliar, start with [`optical-artifacts-glossary.md`](optical-artifacts-glossary.md).
 
 For structured follow-up experiments, use:
 

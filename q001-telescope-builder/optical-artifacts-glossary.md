@@ -6,6 +6,18 @@ For how we **score** halo, veiling, ghosts, and detail in the field logs, see [`
 
 ---
 
+## Moon terminator
+
+**What it is:** On the Moon, the **terminator** is the **line dividing the sunlit day side from the unlit night side**—the boundary where lunar “sunrise” or “sunset” is happening. As the phase changes night to night, that boundary **moves across the disk**.
+
+**Why we keep mentioning it in this project:** Along the terminator you get **very bright** crater walls and highlands right next to **very dark** shadow. That is a **high-contrast** scene, so **halos, colour fringes, veiling, and ghosts** tend to show up clearly—similar to bright planets.
+
+**Not the same as:** the **limb** alone (the outer edge of the Moon’s disk can be bright without the strong sun/shadow split you get at the terminator).
+
+**Practical tip for testing:** Centre the eyepiece field on the **curved boundary between bright and dark**, not only on the middle of the full Moon.
+
+---
+
 ## Halo
 
 **What it is:** Bright light that spreads **around** a compact bright object (planet, Moon limb, bright star) as a **glow or colored fringe**, wider than the “true” sharp edge of the object.
@@ -52,7 +64,7 @@ For how we **score** halo, veiling, ghosts, and detail in the field logs, see [`
 - Strong halos from aberration can also feel like veiling if they are wide enough to overlap nearby dark sky.
 
 **Example:**  
-“Along the Moon’s terminator, the shadow side should look black, but it looks **smoky grey** right next to the bright limb.”
+“Along the [Moon’s terminator](#moon-terminator), the shadow side should look black, but it looks **smoky grey** right next to the bright limb.”
 
 **Not the same as:** **halo**, which is usually more **localized around the bright source**; veiling is more about **global or regional contrast loss**.
 
