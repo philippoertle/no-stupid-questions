@@ -45,6 +45,7 @@ It also generates plot images in `plots/`:
 - `plots/template_tube_layout.png`
 - `plots/template_focuser_drill.png`
 - `plots/template_printed_parts_overview.png`
+- `plots/moon_terminator_reference.png` (builder reference; see aberration analysis)
 
 It writes template dimensions to:
 
@@ -191,7 +192,7 @@ It may be useful only as a temporary fold element for experimentation, but quali
 
 For first-build aberration diagnosis and mitigation, see:
 
-- [`aberration-analysis.md`](aberration-analysis.md)
+- [`aberration-analysis.md`](aberration-analysis.md) (includes a **lunar terminator** reference frame in `plots/moon_terminator_reference.png`)
 - [`diagnostic-script.md`](diagnostic-script.md)
 
 This includes:

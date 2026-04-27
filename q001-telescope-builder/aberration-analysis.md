@@ -32,6 +32,21 @@ Interpretation:
 - This behavior strongly indicates an **objective-dominated, edge-ray problem** (spherical/chromatic residuals and possible lens-edge scatter), not just eyepiece quality.
 - Baffles alone are unlikely to remove this, because they suppress tube stray light but do not correct intrinsic objective wavefront error.
 
+## 1.2) Lunar terminator reference (digiscoped)
+
+Reference capture of the Moon (terminator and bright limb) through the same build:
+
+![Moon terminator reference](plots/moon_terminator_reference.png)
+
+What this frame shows (typical for this class of problem):
+
+- **Chromatic aberration:** blue/purple fringe on one limb, warmer (yellow/orange) tint on another — consistent with **longitudinal and lateral color** in white light on a high-contrast edge, not random “sensor noise.”
+- **Veiling / low contrast:** haze extending from bright limb into sky and over fine crater detail — consistent with **residual spherical aberration**, slight defocus between colors, and scattered light in the tube.
+- **Ghost in dark sky:** a faint diffuse spot away from the limb — consistent with **internal reflections** between air-glass surfaces or bright scatter finding a secondary image path; baffles and blackening help here, but they do not remove primary objective color error.
+- **Circular vignette and edge softness:** typical of **afocal smartphone** placement; compare to a visual-only look at the same eyepiece setting.
+
+How this ties to the **40 mm mask** result: the lunar limb is another high-contrast scene where **marginal rays** at full aperture drive both color and veiling; stopping down trims those rays first, which is why a small mask cleans the image at the cost of resolution and light grasp.
+
 ## 2) Most Likely Aberration Modes (ranked)
 
 1. **Chromatic aberration (longitudinal + lateral)**  
