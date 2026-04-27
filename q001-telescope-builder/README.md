@@ -88,7 +88,40 @@ Core equations:
 - `TFOV ~= AFOV / M`
 - Diffraction estimate (Rayleigh): `theta = 1.22 * lambda / D`
 
-## 4) Current Assumptions
+For symbols and shorthand used in this README and in the diagnostics, see **Section 4 (Terms and Abbreviations)**.
+
+## 4) Terms and Abbreviations
+
+Symbols match [`model.py`](model.py) (`TelescopeConfig`, equations above) unless noted. For **halo**, **ghost**, **veiling**, **detail**, and **Moon terminator**, see [`optical-artifacts-glossary.md`](optical-artifacts-glossary.md).
+
+| Term | Meaning |
+|------|---------|
+| **Objective** | Front lens that forms a real image of distant objects; here ~106 mm clear diameter, **f_obj** = 900 mm focal length. |
+| **Eyepiece** | Magnifier that views the objective’s focal image; **f_eye** is its focal length (e.g. 25 mm, 10 mm). |
+| **Kepler(ian) refractor** | Objective + eyepiece layout: intermediate image is real and inverted; classic astronomical refractor. |
+| **f_obj** | Objective focal length (mm). |
+| **f_eye** | Eyepiece focal length (mm). |
+| **D**, **D_obj** | Clear entrance pupil / objective diameter (mm); nominal 106 mm unless you measure otherwise. |
+| **D_stop** | Clear diameter of an **aperture mask** or stop during a sweep (mm). |
+| **D_full** | Full clear aperture without a mask; usually **D_obj**. |
+| **f/#**, **F-number** | Focal ratio **f_obj / D** with **D** the beam-limiting clear aperture (objective or stop). |
+| **M** | Visual magnification (planning): **M ≈ f_obj / f_eye** for object at infinity. |
+| **D_exit** | Exit pupil diameter (mm): bundle diameter leaving the eyepiece toward the eye; **≈ D / M ≈ f_eye / (f/#)**. |
+| **AFOV** | Apparent field of view of the eyepiece (degrees); manufacturer specification. |
+| **TFOV** | True field of view on the sky (degrees); here approximated as **AFOV / M**. |
+| **λ** (lambda) | Wavelength in diffraction formulas; **550 nm** in the Rayleigh estimate unless stated otherwise. |
+| **Paraxial** | Small-angle ray approximation used for layout and cone sketches; adequate for tube/baffle sizing, not full aberration theory. |
+| **Marginal / peripheral rays** | Rays from the outer part of the pupil; often dominate spherical and chromatic error at full aperture. |
+| **Baffle** | Opaque ring or vane that blocks non-imaging light paths inside the tube; see suggested clear diameters in the model report. |
+| **OD**, **ID** | Tube **outside** and **inside** diameter (print templates / `TemplateConfig`). |
+| **A_ref** | Reference aperture (mm) chosen after **Script A** (aperture sweep); held fixed during **Script B**. |
+| **F_ref** | Repeatable best-focus procedure tied to **A_ref** (field protocol). |
+| **B0, B1, B2** | Baffle **states** in Script B (e.g. none / as-built / improved). |
+| **CSV** | Comma-separated field log ([`templates/aperture-sweep-log.csv`](templates/aperture-sweep-log.csv), [`templates/baffle-sweep-log.csv`](templates/baffle-sweep-log.csv)). |
+| **SCAD** | OpenSCAD source files under [`templates/`](templates/) for printed jigs and rings. |
+| **PETG**, **ASA** | Common 3D-printing filaments suggested for mechanical parts. |
+
+## 5) Current Assumptions
 
 - Objective focal length **`f_obj = 900 mm` is confirmed** for the first build. Clear aperture is still treated as **`D = 106 mm`** unless you measure the clear aperture at the cell.
 - Focuser travel is **`100 mm` total** (builder reports **±50 mm** from a neutral focus position).  
@@ -103,7 +136,7 @@ When you measure your actual focuser geometry, update:
 
 in `TelescopeConfig` inside [`model.py`](model.py).
 
-## 5) Generated Physics Illustrations
+## 6) Generated Physics Illustrations
 
 These are generated directly by the model and can be refreshed anytime by rerunning:
 
@@ -141,7 +174,7 @@ For the configured `f_obj` and nominal full aperture: **f/#** and **Rayleigh dif
 
 Highly simplified **side-view ray sketch**: blue = on-axis imaging cone; red dashed = representative **non-imaging** path from bright off-axis sky via wall scatter toward the focal volume. The right panel adds **blackened baffles** that intercept indirect light. Real tubes are 3D; this matches the idea in [`diagnostic-baffle-sweep.md`](diagnostic-baffle-sweep.md) that baffling is about **geometry and stray paths**, not polishing the objective.
 
-## 6) Cut/Drill Templates + 3D Printed Jigs
+## 7) Cut/Drill Templates + 3D Printed Jigs
 
 This project now includes first-pass printable templates in [`templates/`](templates/):
 
@@ -188,7 +221,7 @@ Suggested first print set:
 4. Print full parts in PETG or ASA.
 5. Dry-fit before drilling tube.
 
-## 7) First-Cut Build Procedure (Physical Assembly)
+## 8) First-Cut Build Procedure (Physical Assembly)
 
 1. **Objective mounting**
    - Build a centered lens cell.
@@ -215,16 +248,16 @@ Suggested first print set:
    - Check stars for symmetric focus behavior.
    - If strong asymmetry appears, re-check centering and tilt.
 
-## 8) Notes on the "Microscope Mirror"
+## 9) Notes on the "Microscope Mirror"
 
 Do not use a random microscope mirror as a primary telescope mirror.
 It may be useful only as a temporary fold element for experimentation, but quality/surface/coating are often unsuitable for sharp astronomical imaging.
 
-## 9) Physics: why aperture and baffle sweeps improve the image
+## 10) Physics: why aperture and baffle sweeps improve the image
 
 This project treats light with **geometrical (ray) optics** for layout and intuition: in a uniform medium rays travel straight; at surfaces they reflect or refract. That picture is accurate when apertures and features are **large compared to the wavelength**; it explains the **imaging cone** and **stray-light paths**, but it does not replace wave optics for fine **diffraction** structure (Airy pattern, ring detail on a star).
 
-The two field scripts attack **different** mechanisms. Used in order (aperture first, then baffles), they help you pick settings that maximize **contrast and sharpness you can actually see**, not only raw aperture. The corresponding **model figures** are in **§5** ([`plots/aperture_sweep_physics.png`](plots/aperture_sweep_physics.png), [`plots/baffle_sweep_concept.png`](plots/baffle_sweep_concept.png)); optional **score plots** from filled CSVs are described in **§2**.
+The two field scripts attack **different** mechanisms. Used in order (aperture first, then baffles), they help you pick settings that maximize **contrast and sharpness you can actually see**, not only raw aperture. The corresponding **model figures** are in **Section 6** ([`plots/aperture_sweep_physics.png`](plots/aperture_sweep_physics.png), [`plots/baffle_sweep_concept.png`](plots/baffle_sweep_concept.png)); optional **score plots** from filled CSVs are described in **Section 2** (Quick Start).
 
 ### Aperture sweep ([`diagnostic-aperture-sweep.md`](diagnostic-aperture-sweep.md))
 
@@ -249,7 +282,7 @@ Well-placed baffles narrow the range of **angles** from which the detector or ey
 
 Together they separate “what the glass is doing” from “what the tube is leaking,” which is exactly the split encoded in the diagnostic protocols and the evidence table in [`aberration-analysis.md`](aberration-analysis.md).
 
-## 10) Aberration Troubleshooting
+## 11) Aberration Troubleshooting
 
 For first-build aberration diagnosis and mitigation, see:
 
@@ -268,13 +301,13 @@ This includes:
 - script-specific logging tables and CSV templates:
   - [`templates/aperture-sweep-log.csv`](templates/aperture-sweep-log.csv)
   - [`templates/baffle-sweep-log.csv`](templates/baffle-sweep-log.csv)
-- optional score plots from those logs: [`scripts/plot_diagnostic_sweeps.py`](scripts/plot_diagnostic_sweeps.py) (see **§2**)
+- optional score plots from those logs: [`scripts/plot_diagnostic_sweeps.py`](scripts/plot_diagnostic_sweeps.py) (see **Section 2**)
 - field quick-reference card:
   - [`templates/scoring-cheatsheet.md`](templates/scoring-cheatsheet.md)
 - explicit quantitative 1-5 scoring anchors (what counts as low, moderate, high)
 - an **evidence table** (image → artifacts → likely modes → confidence) in `aberration-analysis.md`
 
-## 11) What to Improve Next
+## 12) What to Improve Next
 
 After this foundation is validated, next steps are:
 
