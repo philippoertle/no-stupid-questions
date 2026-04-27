@@ -195,6 +195,7 @@ It may be useful only as a temporary fold element for experimentation, but quali
 
 For first-build aberration diagnosis and mitigation, see:
 
+- [`optical-artifacts-glossary.md`](optical-artifacts-glossary.md) (beginner definitions: halo, ghost, veil, detail)
 - [`aberration-analysis.md`](aberration-analysis.md) (includes embedded **planet/moon with-lid vs no-lid** image set)
 - [`diagnostic-aperture-sweep.md`](diagnostic-aperture-sweep.md)
 - [`diagnostic-baffle-sweep.md`](diagnostic-baffle-sweep.md)

@@ -2,6 +2,8 @@
 
 Use this script to isolate how much of the halo/veiling problem is driven by **aperture (marginal rays)** versus focus or mechanics.
 
+Terminology: see [`optical-artifacts-glossary.md`](optical-artifacts-glossary.md).
+
 ## Purpose
 
 - Quantify halo/detail tradeoff as aperture changes.

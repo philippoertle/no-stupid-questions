@@ -2,6 +2,8 @@
 
 Use this script **after** the aperture sweep to test whether baffling improves ghosting/veiling beyond the chosen aperture strategy.
 
+Terminology: see [`optical-artifacts-glossary.md`](optical-artifacts-glossary.md).
+
 ## Prerequisite
 
 Run [`diagnostic-aperture-sweep.md`](diagnostic-aperture-sweep.md) first and choose:

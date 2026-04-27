@@ -2,6 +2,8 @@
 
 The diagnostic protocol is now split into two separate experiments so evidence gathering stays clean:
 
+New to the vocabulary? Read [`optical-artifacts-glossary.md`](optical-artifacts-glossary.md) first.
+
 1. [`diagnostic-aperture-sweep.md`](diagnostic-aperture-sweep.md)  
    Isolates aperture-driven effects (marginal-ray chromatic/spherical behavior, halo/detail tradeoff).
 

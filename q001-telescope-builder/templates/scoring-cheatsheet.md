@@ -4,6 +4,7 @@ Use this during observations to keep scoring consistent across runs.
 
 Related protocols:
 
+- [Artifact definitions (halo, ghost, veil, detail)](../optical-artifacts-glossary.md)
 - [Aperture sweep script](../diagnostic-aperture-sweep.md)
 - [Baffle sweep script](../diagnostic-baffle-sweep.md)
 - [Aberration analysis](../aberration-analysis.md)
