@@ -437,6 +437,144 @@ def generate_template_plots(
     return generated
 
 
+def generate_diagnostic_sweep_plots(
+    cfg: TelescopeConfig,
+    tpl: TemplateConfig,
+    output_dir: Path,
+) -> list[Path]:
+    """
+    Figures for README / diagnostics: aperture-stop physics and baffle ray concept.
+
+    These are model-based (not from field scores). For plots from filled CSV logs,
+    use scripts/plot_diagnostic_sweeps.py.
+    """
+    import matplotlib.pyplot as plt
+    import numpy as np
+    from matplotlib.patches import Rectangle
+
+    output_dir.mkdir(parents=True, exist_ok=True)
+    generated: list[Path] = []
+
+    d_max = cfg.objective_diameter_mm
+    f_obj = cfg.objective_focal_length_mm
+    d = np.linspace(max(32.0, d_max * 0.32), d_max, 160)
+    f_numbers = f_obj / d
+    wavelength_m = 550e-9
+    theta_arcsec = (1.22 * wavelength_m / (d * 1e-3)) * 206265.0
+    relative_flux = (d / d_max) ** 2 * 100.0
+
+    sweep_marks = [40.0, 60.0, 70.0, 80.0, d_max]
+
+    fig_a, (ax_top, ax_bot) = plt.subplots(2, 1, figsize=(9, 6.4), sharex=True)
+    ax_top.plot(d, f_numbers, color="tab:blue", linewidth=2.0, label="f/# = f_obj / D_stop")
+    ax_top.set_ylabel("f-number")
+    ax_top.grid(alpha=0.25)
+    ax_top.legend(loc="upper right")
+    ax_top.set_title("Aperture sweep (model): stop diameter vs speed and diffraction @ 550 nm")
+
+    ax_twin = ax_top.twinx()
+    ax_twin.plot(
+        d,
+        theta_arcsec,
+        color="tab:orange",
+        linewidth=2.0,
+        linestyle="--",
+        label="Rayleigh θ (arcsec)",
+    )
+    ax_twin.set_ylabel("Diffraction scale (arcsec)")
+    ax_twin.legend(loc="center right")
+
+    for mark in sweep_marks:
+        if mark <= d_max + 1e-6:
+            ax_top.axvline(mark, color="gray", linestyle=":", alpha=0.4)
+
+    ax_bot.plot(d, relative_flux, color="tab:green", linewidth=2.0, label="vs full aperture")
+    ax_bot.set_xlabel("Stop diameter D_stop (mm)")
+    ax_bot.set_ylabel("Relative light grasp (%)")
+    ax_bot.set_ylim(0, 105)
+    ax_bot.grid(alpha=0.25)
+    ax_bot.legend(loc="lower right")
+    for mark in sweep_marks:
+        if mark <= d_max + 1e-6:
+            ax_bot.axvline(mark, color="gray", linestyle=":", alpha=0.4)
+    ax_bot.set_title("Relative étendue scales as (D_stop / D_full)²")
+
+    fig_a.tight_layout()
+    path_a = output_dir / "aperture_sweep_physics.png"
+    fig_a.savefig(path_a, dpi=180)
+    plt.close(fig_a)
+    generated.append(path_a)
+
+    # Schematic: tube cross-section, on-axis cone vs wall scatter; baffles truncate stray paths.
+    fig_b, (ax_l, ax_r) = plt.subplots(1, 2, figsize=(11.0, 4.3))
+
+    def _draw_schematic(ax, with_baffles: bool, title: str) -> None:
+        z0, z1 = 0.0, 12.0
+        y_lo, y_hi = -1.0, 1.0
+        ax.set_xlim(-2.2, 13.0)
+        ax.set_ylim(-2.0, 2.5)
+        ax.set_aspect("equal")
+        ax.axis("off")
+        ax.add_patch(
+            Rectangle(
+                (z0, y_lo),
+                z1 - z0,
+                y_hi - y_lo,
+                facecolor="#EAEAEA",
+                edgecolor="black",
+                linewidth=1.4,
+            )
+        )
+        ax.plot([z0, z0], [y_lo - 0.2, y_hi + 0.2], color="black", linewidth=4.0)
+        ax.text(z0, y_hi + 0.35, "Objective", ha="center", fontsize=9)
+
+        z_focus = 10.0
+        h0 = 0.82
+        ax.plot([z0, z_focus], [h0, 0.0], color="tab:blue", linewidth=1.8, label="Imaging rays")
+        ax.plot([z0, z_focus], [-h0, 0.0], color="tab:blue", linewidth=1.8)
+        ax.plot([z_focus, z_focus], [-0.35, 0.35], color="tab:green", linewidth=2.0)
+        ax.text(z_focus, y_lo - 0.55, "Image space", ha="center", fontsize=9, color="tab:green")
+
+        if with_baffles:
+            ax.add_patch(Rectangle((2.85, 0.32), 0.18, y_hi - 0.32, facecolor="#2A2A2A", edgecolor="black"))
+            ax.add_patch(Rectangle((5.85, y_lo), 0.18, 0.42, facecolor="#2A2A2A", edgecolor="black"))
+            ax.text(4.5, y_hi + 0.35, "Blackened baffles", ha="center", fontsize=9)
+
+        ax.plot([-1.6, 3.8], [2.05, y_hi], color="tab:red", linestyle="--", linewidth=1.6)
+        ax.plot([3.8, 9.2], [y_hi, 0.22], color="tab:red", linestyle="--", linewidth=1.6)
+        ax.plot([9.2, z_focus], [0.22, 0.05], color="tab:red", linestyle=":", linewidth=1.2, alpha=0.85)
+        ax.text(-1.4, 2.1, "Bright\noff-axis sky", fontsize=8, color="tab:red", va="bottom")
+
+        ax.set_title(title, fontsize=10)
+
+    _draw_schematic(
+        ax_l,
+        False,
+        "Concept: wall scatter adds veiling / ghosts",
+    )
+    _draw_schematic(
+        ax_r,
+        True,
+        "Concept: baffles intercept non-imaging paths",
+    )
+    handles, labels = ax_l.get_legend_handles_labels()
+    fig_b.legend(handles, labels, loc="lower center", ncol=1, frameon=True)
+    tube_id = tpl.tube_outer_diameter_mm - 2.0 * tpl.tube_wall_mm
+    fig_b.suptitle(
+        "Baffle sweep (ray picture): stray light is tube geometry, not objective glass "
+        f"(tube ID ~ {tube_id:.0f} mm in model)",
+        fontsize=10,
+        y=1.04,
+    )
+    fig_b.tight_layout()
+    path_b = output_dir / "baffle_sweep_concept.png"
+    fig_b.savefig(path_b, dpi=180, bbox_inches="tight")
+    plt.close(fig_b)
+    generated.append(path_b)
+
+    return generated
+
+
 if __name__ == "__main__":
     cfg = TelescopeConfig()
     tpl = TemplateConfig()
@@ -445,6 +583,7 @@ if __name__ == "__main__":
         base_dir = Path(__file__).resolve().parent
         output_paths = generate_plots(cfg, base_dir / "plots")
         output_paths.extend(generate_template_plots(cfg, tpl, base_dir / "plots"))
+        output_paths.extend(generate_diagnostic_sweep_plots(cfg, tpl, base_dir / "plots"))
         dims_path = write_template_dimensions(cfg, tpl, base_dir / "templates")
         print()
         print("Generated plots")

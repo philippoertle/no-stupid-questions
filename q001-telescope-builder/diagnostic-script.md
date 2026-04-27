@@ -4,6 +4,8 @@ The diagnostic protocol is now split into two separate experiments so evidence g
 
 New to the vocabulary? Read [`optical-artifacts-glossary.md`](optical-artifacts-glossary.md) first.
 
+Model figures for the sweeps (regenerate with `python model.py` or `python scripts/plot_diagnostic_sweeps.py`): [`plots/aperture_sweep_physics.png`](plots/aperture_sweep_physics.png), [`plots/baffle_sweep_concept.png`](plots/baffle_sweep_concept.png). Optional score charts from filled CSV columns: see [`README.md`](README.md) Quick Start (`--aperture-csv` / `--baffle-csv`).
+
 1. [`diagnostic-aperture-sweep.md`](diagnostic-aperture-sweep.md)  
    Isolates aperture-driven effects (marginal-ray chromatic/spherical behavior, halo/detail tradeoff).
 

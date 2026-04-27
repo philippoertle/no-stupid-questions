@@ -45,6 +45,8 @@ It also generates plot images in [`plots/`](plots/):
 - [`plots/template_tube_layout.png`](plots/template_tube_layout.png)
 - [`plots/template_focuser_drill.png`](plots/template_focuser_drill.png)
 - [`plots/template_printed_parts_overview.png`](plots/template_printed_parts_overview.png)
+- [`plots/aperture_sweep_physics.png`](plots/aperture_sweep_physics.png) (stop diameter vs f/#, diffraction, light grasp)
+- [`plots/baffle_sweep_concept.png`](plots/baffle_sweep_concept.png) (ray schematic: stray light vs baffles)
 - [`data/planet-lid-with-4cm-hole.jpeg`](data/planet-lid-with-4cm-hole.jpeg) (builder reference; see aberration analysis)
 - [`data/planet-no-lid.jpeg`](data/planet-no-lid.jpeg) (builder reference; see aberration analysis)
 - [`data/moon_lid-with-4cm-hole.png`](data/moon_lid-with-4cm-hole.png) (builder reference; see aberration analysis)
@@ -53,6 +55,21 @@ It also generates plot images in [`plots/`](plots/):
 It writes template dimensions to:
 
 - [`templates/template_dimensions.md`](templates/template_dimensions.md)
+
+To regenerate **only** the diagnostic sweep figures (same PNGs as above):
+
+```bash
+python scripts/plot_diagnostic_sweeps.py
+```
+
+After you fill numeric scores in the field CSV logs, optional **score charts** (written under [`plots/`](plots/) when enough rows are present):
+
+```bash
+python scripts/plot_diagnostic_sweeps.py --aperture-csv templates/aperture-sweep-log.csv
+python scripts/plot_diagnostic_sweeps.py --baffle-csv templates/baffle-sweep-log.csv
+```
+
+→ [`plots/aperture_sweep_scores.png`](plots/aperture_sweep_scores.png), [`plots/baffle_sweep_scores.png`](plots/baffle_sweep_scores.png) (created on demand; not checked in until you run this).
 
 ## 3) Optical Model Used
 
@@ -111,6 +128,18 @@ Compares magnification, exit pupil, and approximate true field for your 25 mm an
 ![Focus budget](plots/focus_budget.png)
 
 Illustrates the confirmed focuser travel range and why targeting infinity focus near mid-travel is practical for build tolerance and eyepiece variation.
+
+### Aperture sweep (model curves)
+
+![Aperture sweep physics](plots/aperture_sweep_physics.png)
+
+For the configured `f_obj` and nominal full aperture: **f/#** and **Rayleigh diffraction scale** vs stop diameter `D_stop`, plus **relative light grasp** scaling as `(D_stop / D_full)²`. Vertical ticks mark typical mask sizes used in [`diagnostic-aperture-sweep.md`](diagnostic-aperture-sweep.md). This is a planning chart, not a substitute for your logged halo/detail scores.
+
+### Baffle sweep (concept schematic)
+
+![Baffle sweep concept](plots/baffle_sweep_concept.png)
+
+Highly simplified **side-view ray sketch**: blue = on-axis imaging cone; red dashed = representative **non-imaging** path from bright off-axis sky via wall scatter toward the focal volume. The right panel adds **blackened baffles** that intercept indirect light. Real tubes are 3D; this matches the idea in [`diagnostic-baffle-sweep.md`](diagnostic-baffle-sweep.md) that baffling is about **geometry and stray paths**, not polishing the objective.
 
 ## 6) Cut/Drill Templates + 3D Printed Jigs
 
@@ -195,7 +224,7 @@ It may be useful only as a temporary fold element for experimentation, but quali
 
 This project treats light with **geometrical (ray) optics** for layout and intuition: in a uniform medium rays travel straight; at surfaces they reflect or refract. That picture is accurate when apertures and features are **large compared to the wavelength**; it explains the **imaging cone** and **stray-light paths**, but it does not replace wave optics for fine **diffraction** structure (Airy pattern, ring detail on a star).
 
-The two field scripts attack **different** mechanisms. Used in order (aperture first, then baffles), they help you pick settings that maximize **contrast and sharpness you can actually see**, not only raw aperture.
+The two field scripts attack **different** mechanisms. Used in order (aperture first, then baffles), they help you pick settings that maximize **contrast and sharpness you can actually see**, not only raw aperture. The corresponding **model figures** are in **§5** ([`plots/aperture_sweep_physics.png`](plots/aperture_sweep_physics.png), [`plots/baffle_sweep_concept.png`](plots/baffle_sweep_concept.png)); optional **score plots** from filled CSVs are described in **§2**.
 
 ### Aperture sweep ([`diagnostic-aperture-sweep.md`](diagnostic-aperture-sweep.md))
 
@@ -239,6 +268,7 @@ This includes:
 - script-specific logging tables and CSV templates:
   - [`templates/aperture-sweep-log.csv`](templates/aperture-sweep-log.csv)
   - [`templates/baffle-sweep-log.csv`](templates/baffle-sweep-log.csv)
+- optional score plots from those logs: [`scripts/plot_diagnostic_sweeps.py`](scripts/plot_diagnostic_sweeps.py) (see **§2**)
 - field quick-reference card:
   - [`templates/scoring-cheatsheet.md`](templates/scoring-cheatsheet.md)
 - explicit quantitative 1-5 scoring anchors (what counts as low, moderate, high)
