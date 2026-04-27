@@ -14,7 +14,7 @@ Do **not** treat the following as open questions—they are constraints on inter
 |---------------|-------------|
 | **40 mm** front mask removes most halo | Marginal-ray **chromatic + spherical** (and related veiling) dominate at full aperture. |
 | **40 mm** mask costs a lot of detail / brightness | You are trading resolution and light grasp for wavefront quality; **40 mm is an extreme stop**, not a permanent operating mode. |
-| **Baffles** tried, little improvement on bright planets | Tube scatter is **not** the only problem; intrinsic objective + ghost paths still matter. |
+| **Baffles not yet tested** (only proposed) | Keep baffling as a **separate experiment** after aperture-sweep results; it may reduce ghosts/veiling but will not correct intrinsic objective wavefront error. |
 | **Eyepiece swap** (including microscope eyepiece) little change | **Do not spend the session chasing eyepieces** as the primary fix. |
 | **Eye and camera look similar** | Smartphone coupling is **secondary**; optimize **visual** first, then repeat the same checks for imaging if needed. |
 
