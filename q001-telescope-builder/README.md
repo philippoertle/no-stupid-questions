@@ -196,15 +196,22 @@ It may be useful only as a temporary fold element for experimentation, but quali
 For first-build aberration diagnosis and mitigation, see:
 
 - [`aberration-analysis.md`](aberration-analysis.md) (includes embedded **planet/moon with-lid vs no-lid** image set)
-- [`diagnostic-script.md`](diagnostic-script.md)
+- [`diagnostic-aperture-sweep.md`](diagnostic-aperture-sweep.md)
+- [`diagnostic-baffle-sweep.md`](diagnostic-baffle-sweep.md)
+- [`diagnostic-script.md`](diagnostic-script.md) (index page linking both scripts)
 
 This includes:
 
 - likely aberration modes for the reported image pattern
 - interpretation of the 40 mm stop vs full-aperture comparison
+- separated experimental protocols for aperture effects vs baffling effects
 - a mitigation sequence (stop-down, focus, alignment, camera coupling checks)
-- a quick diagnostic matrix to separate chromatic/spherical/alignment/capture effects
-- a **~25–30 minute** field diagnostic script (phased, evidence-aligned, with logging table and “what not to do”)
+- script-specific logging tables and CSV templates:
+  - `templates/aperture-sweep-log.csv`
+  - `templates/baffle-sweep-log.csv`
+- field quick-reference card:
+  - `templates/scoring-cheatsheet.md`
+- explicit quantitative 1-5 scoring anchors (what counts as low, moderate, high)
 - an **evidence table** (image → artifacts → likely modes → confidence) in `aberration-analysis.md`
 
 ## 10) What to Improve Next

@@ -2,6 +2,11 @@
 
 This document captures the likely aberration modes observed in the first-build image and provides practical mitigation and test steps.
 
+For structured follow-up experiments, use:
+
+- [`diagnostic-aperture-sweep.md`](diagnostic-aperture-sweep.md)
+- [`diagnostic-baffle-sweep.md`](diagnostic-baffle-sweep.md)
+
 **Confirmed build specs (builder-verified):**
 
 - Objective focal length **`f_obj = 900 mm`**
@@ -154,4 +159,13 @@ Apply in this order:
 3. Add simple planetary contrast filtering (yellow/green) for bright targets.
 4. Keep baffles as supporting glare control, not primary correction.
 5. If full-aperture planetary performance remains unacceptable, upgrade objective type.
+
+## 7) Next evidence pass
+
+Before revising conclusions again, collect two new datasets:
+
+1. Aperture sweep dataset from `diagnostic-aperture-sweep.md` (includes chosen `A_ref`).
+2. Baffle sweep dataset from `diagnostic-baffle-sweep.md` at the same target class and `A_ref`.
+
+Then re-score confidence in the evidence table based on measured baffle-state deltas.
 
