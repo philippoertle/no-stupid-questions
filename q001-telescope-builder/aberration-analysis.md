@@ -36,7 +36,7 @@ Interpretation:
 
 Reference capture of the Moon (terminator and bright limb) through the same build:
 
-![Moon terminator reference](plots/moon_terminator_reference.png)
+![Moon terminator reference](data/moon_terminator_reference.png)
 
 What this frame shows (typical for this class of problem):
 
