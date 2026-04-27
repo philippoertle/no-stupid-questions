@@ -2,7 +2,12 @@
 
 This document captures the likely aberration modes observed in the first-build image and provides practical mitigation and test steps.
 
-**Confirmed build spec:** objective focal length **`f_obj = 900 mm`** (builder-verified). The analysis below uses that value for f-number and stop-down tradeoffs.
+**Confirmed build specs (builder-verified):**
+
+- Objective focal length **`f_obj = 900 mm`**
+- Focuser rack travel **±50 mm** (treat as **~100 mm total** usable travel in the model)
+
+The analysis below uses those values for f-number and stop-down tradeoffs.
 
 ## 1) Observed Symptoms
 

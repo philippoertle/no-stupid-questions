@@ -4,7 +4,7 @@ Foundation project for modeling and assembling a DIY refractor telescope using:
 
 - Objective lens: 106 mm diameter (nominal), 900 mm focal length (**confirmed** by the builder)
 - Eyepieces: 1.25" Plossl 25 mm and 10 mm (about 50 deg AFOV)
-- Focuser travel: 50 mm
+- Focuser travel: **±50 mm** rack (~**100 mm** total), **confirmed** by the builder
 
 References:
 
@@ -70,7 +70,8 @@ Core equations:
 ## 4) Current Assumptions
 
 - Objective focal length **`f_obj = 900 mm` is confirmed** for the first build. Clear aperture is still treated as **`D = 106 mm`** unless you measure the clear aperture at the cell.
-- Focuser travel is `50 mm`.
+- Focuser travel is **`100 mm` total** (builder reports **±50 mm** from a neutral focus position).  
+  If your hardware is only **5 cm total** travel (not ±5 cm), set `focuser_travel_mm = 50.0` in `model.py` and rerun `python model.py`.
 - Focuser flange-to-field-stop (fully in) is initially estimated in code as `70 mm`.
 - Design target is to place infinity focus near mid travel (~25 mm out from fully in).
 
@@ -105,7 +106,7 @@ Compares magnification, exit pupil, and approximate true field for your 25 mm an
 
 ![Focus budget](plots/focus_budget.png)
 
-Illustrates the 50 mm focuser travel and why targeting infinity focus near mid-travel is practical for build tolerance and eyepiece variation.
+Illustrates the confirmed focuser travel range and why targeting infinity focus near mid-travel is practical for build tolerance and eyepiece variation.
 
 ## 6) Cut/Drill Templates + 3D Printed Jigs
 
@@ -166,7 +167,7 @@ Suggested first print set:
 
 3. **Focuser installation**
    - Mount focuser square to the tube and centered to objective axis.
-   - Ensure travel is smooth across full 50 mm range.
+   - Ensure travel is smooth across the full rack range (~100 mm total).
 
 4. **Stray light control**
    - Matte-black interior.

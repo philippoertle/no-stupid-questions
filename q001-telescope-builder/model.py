@@ -20,7 +20,8 @@ from typing import Iterable
 class TelescopeConfig:
     objective_diameter_mm: float = 106.0
     objective_focal_length_mm: float = 900.0
-    focuser_travel_mm: float = 50.0
+    # Builder-confirmed: rack focus ±5 cm → 100 mm total travel (see README).
+    focuser_travel_mm: float = 100.0
     eyepiece_focal_lengths_mm: tuple[float, ...] = (25.0, 10.0)
     eyepiece_apparent_fov_deg: float = 50.0
     # If unknown, keep this as a best-guess estimate and adjust after measurement.
