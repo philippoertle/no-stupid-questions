@@ -8,7 +8,7 @@ Use this script to isolate whether the first-build image quality is limited main
 - eyepiece issues
 - smartphone afocal coupling artifacts
 
-This script assumes the current build baseline (`106 mm / 900 mm`, 25 mm and 10 mm eyepieces).
+This script matches the current build baseline: **`106 mm` clear aperture**, **`900 mm` objective focal length (confirmed)**, 25 mm and 10 mm eyepieces.
 
 ## 1) Preparation (2 minutes)
 

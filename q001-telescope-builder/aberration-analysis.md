@@ -2,6 +2,8 @@
 
 This document captures the likely aberration modes observed in the first-build image and provides practical mitigation and test steps.
 
+**Confirmed build spec:** objective focal length **`f_obj = 900 mm`** (builder-verified). The analysis below uses that value for f-number and stop-down tradeoffs.
+
 ## 1) Observed Symptoms
 
 From the reported image:
@@ -28,7 +30,7 @@ Interpretation:
 ## 2) Most Likely Aberration Modes (ranked)
 
 1. **Chromatic aberration (longitudinal + lateral)**  
-   Most likely dominant mode given the colored halo and likely singlet objective behavior in white light.
+   Most likely dominant mode given the colored halo. A **doublet** can still show strong residual color in white light if it is a modest achromat or not fully corrected for this speed and field.
 
 2. **Defocus + spherical aberration residual**  
    The broad glow is consistent with focus not converging tightly across zones/colors.

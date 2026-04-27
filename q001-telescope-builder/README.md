@@ -2,7 +2,7 @@
 
 Foundation project for modeling and assembling a DIY refractor telescope using:
 
-- Objective lens: 106 mm diameter, 900 mm focal length (assumed)
+- Objective lens: 106 mm diameter (nominal), 900 mm focal length (**confirmed** by the builder)
 - Eyepieces: 1.25" Plossl 25 mm and 10 mm (about 50 deg AFOV)
 - Focuser travel: 50 mm
 
@@ -69,7 +69,7 @@ Core equations:
 
 ## 4) Current Assumptions
 
-- Objective is treated as `f_obj = 900 mm`, `D = 106 mm`.
+- Objective focal length **`f_obj = 900 mm` is confirmed** for the first build. Clear aperture is still treated as **`D = 106 mm`** unless you measure the clear aperture at the cell.
 - Focuser travel is `50 mm`.
 - Focuser flange-to-field-stop (fully in) is initially estimated in code as `70 mm`.
 - Design target is to place infinity focus near mid travel (~25 mm out from fully in).
