@@ -45,7 +45,10 @@ It also generates plot images in `plots/`:
 - `plots/template_tube_layout.png`
 - `plots/template_focuser_drill.png`
 - `plots/template_printed_parts_overview.png`
-- `data/moon_terminator_reference.png` (builder reference; see aberration analysis)
+- `data/planet-lid-with-4cm-hole.jpeg` (builder reference; see aberration analysis)
+- `data/planet-no-lid.jpeg` (builder reference; see aberration analysis)
+- `data/moon_lid-with-4cm-hole.png` (builder reference; see aberration analysis)
+- `data/moon-no-lid.jpeg` (builder reference; see aberration analysis)
 
 It writes template dimensions to:
 
@@ -74,7 +77,7 @@ Core equations:
 - Focuser travel is **`100 mm` total** (builder reports **±50 mm** from a neutral focus position).  
   If your hardware is only **5 cm total** travel (not ±5 cm), set `focuser_travel_mm = 50.0` in `model.py` and rerun `python model.py`.
 - Focuser flange-to-field-stop (fully in) is initially estimated in code as `70 mm`.
-- Design target is to place infinity focus near mid travel (~25 mm out from fully in).
+- Design target is to place infinity focus near mid travel (~50 mm out from fully in).
 
 When you measure your actual focuser geometry, update:
 
@@ -192,7 +195,7 @@ It may be useful only as a temporary fold element for experimentation, but quali
 
 For first-build aberration diagnosis and mitigation, see:
 
-- [`aberration-analysis.md`](aberration-analysis.md) (includes a **lunar terminator** reference frame in `data/moon_terminator_reference.png`)
+- [`aberration-analysis.md`](aberration-analysis.md) (includes embedded **planet/moon with-lid vs no-lid** image set)
 - [`diagnostic-script.md`](diagnostic-script.md)
 
 This includes:
@@ -201,7 +204,8 @@ This includes:
 - interpretation of the 40 mm stop vs full-aperture comparison
 - a mitigation sequence (stop-down, focus, alignment, camera coupling checks)
 - a quick diagnostic matrix to separate chromatic/spherical/alignment/capture effects
-- a timed 10-minute diagnostic script with pass/fail interpretation
+- a **~25–30 minute** field diagnostic script (phased, evidence-aligned, with logging table and “what not to do”)
+- an **evidence table** (image → artifacts → likely modes → confidence) in `aberration-analysis.md`
 
 ## 10) What to Improve Next
 

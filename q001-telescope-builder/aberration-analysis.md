@@ -11,12 +11,13 @@ The analysis below uses those values for f-number and stop-down tradeoffs.
 
 ## 1) Observed Symptoms
 
-From the reported image:
+From the reported image set:
 
-- Strong blue/purple halo around a bright central target
-- Soft edge definition and diffuse glow
-- Slight asymmetry/irregularity in bright core shape
-- Large dim colored field that may include camera-eyepiece coupling effects
+- Strong blue/purple halo around bright targets at full aperture
+- Soft edge definition and diffuse glow around high-contrast boundaries
+- Slight asymmetry/irregularity in bright cores
+- Ghost-like secondary bright spots in some full-aperture planet frames
+- Similar appearance by eye and by camera (builder-confirmed), which reduces the chance that phone coupling is the main root cause
 
 ## 1.1) New Field Evidence (Aperture Mask Comparison)
 
@@ -26,26 +27,53 @@ Additional report from first-light testing:
 - With a front mask using a `40 mm` hole, the halo nearly disappears.
 - With the `40 mm` mask, perceived detail drops strongly.
 - Eyepiece swap (including a microscope eyepiece) did not materially change the effect.
+- Visual and camera impressions are reported to be very similar.
 
 Interpretation:
 
 - This behavior strongly indicates an **objective-dominated, edge-ray problem** (spherical/chromatic residuals and possible lens-edge scatter), not just eyepiece quality.
 - Baffles alone are unlikely to remove this, because they suppress tube stray light but do not correct intrinsic objective wavefront error.
 
-## 1.2) Lunar terminator reference (digiscoped)
+## 1.2) Four-image reference set (embedded)
 
-Reference capture of the Moon (terminator and bright limb) through the same build:
+### Planet with 4 cm lid aperture
 
-![Moon terminator reference](data/moon_terminator_reference.png)
+![Planet with lid and 4 cm hole](data/planet-lid-with-4cm-hole.jpeg)
 
-What this frame shows (typical for this class of problem):
+### Planet without lid (full aperture)
 
-- **Chromatic aberration:** blue/purple fringe on one limb, warmer (yellow/orange) tint on another — consistent with **longitudinal and lateral color** in white light on a high-contrast edge, not random “sensor noise.”
-- **Veiling / low contrast:** haze extending from bright limb into sky and over fine crater detail — consistent with **residual spherical aberration**, slight defocus between colors, and scattered light in the tube.
-- **Ghost in dark sky:** a faint diffuse spot away from the limb — consistent with **internal reflections** between air-glass surfaces or bright scatter finding a secondary image path; baffles and blackening help here, but they do not remove primary objective color error.
-- **Circular vignette and edge softness:** typical of **afocal smartphone** placement; compare to a visual-only look at the same eyepiece setting.
+![Planet without lid](data/planet-no-lid.jpeg)
 
-How this ties to the **40 mm mask** result: the lunar limb is another high-contrast scene where **marginal rays** at full aperture drive both color and veiling; stopping down trims those rays first, which is why a small mask cleans the image at the cost of resolution and light grasp.
+### Moon with 4 cm lid aperture
+
+![Moon with lid and 4 cm hole](data/moon_lid-with-4cm-hole.png)
+
+### Moon without lid (full aperture)
+
+![Moon without lid](data/moon-no-lid.jpeg)
+
+## 1.3) Image-by-image interpretation
+
+- **Planet / no lid:** strongest halo and ghosting, consistent with marginal-ray driven chromatic/spherical residuals plus internal reflections.
+- **Planet / 4 cm lid:** halo collapses strongly, matching a stop-down reduction in edge-ray aberrations.
+- **Moon / no lid:** visible color fringes and veiling at bright limb; contrast washed near the terminator.
+- **Moon / 4 cm lid:** cleaner edge rendering and reduced color haze, but lower fine-detail throughput and brightness.
+
+How this ties to the **40 mm mask** result: both lunar and planetary frames confirm that high-contrast scenes at full aperture are dominated by marginal-ray behavior. Stopping down trims those rays first, cleaning the image at the cost of light grasp and diffraction-limited resolution.
+
+## 1.4) Evidence table (quick review)
+
+Use this table when discussing results with the builder or when deciding what to try next. **Confidence** is qualitative (High / Medium / Low) based on the image set and field reports, not a lab measurement.
+
+| Image file | Observed artifacts | Likely optical mode(s) | Confidence |
+|------------|-------------------|------------------------|------------|
+| `planet-no-lid.jpeg` | Large blue/violet halo; diffuse glow; secondary bright spots (ghost chain) | Longitudinal + lateral **chromatic**; **spherical** / zone residuals at full aperture; **internal reflections** (ghosts) | **High** |
+| `planet-lid-with-4cm-hole.jpeg` | Halo strongly reduced; planet still bright; moons visible; some elongation or residual softness | Same modes **suppressed** by stop-down; residual may be tracking, slight defocus, or remaining CA/SA | **High** |
+| `moon-no-lid.jpeg` | Color fringes on limb; veiling / low contrast on terminator; possible faint ghost in dark sky | **Chromatic** + **spherical** / defocus across color; optional **ghost** path | **Medium to high** |
+| `moon_lid-with-4cm-hole.png` | Cleaner limb edges; less color haze; dimmer / softer fine detail vs no-lid | Stop-down trims marginal rays; **diffraction** and lower étendue limit detail | **High** |
+| *(cross-cut)* Eye vs camera match | Same defects visible visually and on camera | Primary cause is **telescope + train**, not smartphone-only artifacts | **High** (per builder report) |
+
+**How to read the table:** if a row’s “likely modes” improve when you only change aperture (same target, same eyepiece), treat that as evidence those modes are **aperture-driven** (marginal rays). If a symptom persists even at small stops, prioritize **alignment, ghosts, or focus**.
 
 ## 2) Most Likely Aberration Modes (ranked)
 
@@ -58,8 +86,8 @@ How this ties to the **40 mm mask** result: the lunar limb is another high-contr
 3. **Tilt/decenter or lens stress (pinch)**  
    Asymmetry can come from objective/focuser axis mismatch or retaining ring preload.
 
-4. **Afocal smartphone coupling artifacts**  
-   Vignetting and off-axis phone alignment can exaggerate blur/halo appearance in photos.
+4. **Afocal smartphone coupling artifacts (secondary)**  
+   Still possible for framing/vignetting, but less likely to be the primary defect because the builder reports similar visual and camera appearance.
 
 ## 2.1) Why the 40 mm Mask Works
 
@@ -102,7 +130,7 @@ Apply in this order:
 
 - **If stopping down helps a lot** -> spherical/chromatic geometric blur is significant.
 - **If stopping down does not help** -> suspect gross focus/alignment/coupling problems.
-- **If visual is clean but phone is poor** -> smartphone coupling dominates artifacts.
+- **If visual and phone are similarly degraded** -> telescope optics/mechanics dominate (current evidence points here).
 - **If asymmetry changes when rotating eyepiece** -> eyepiece contribution is likely.
 - **If asymmetry does not rotate with eyepiece** -> objective/alignment contribution is likely.
 

@@ -1,117 +1,170 @@
-# 10-Minute Aberration Diagnostic Script
+# Field diagnostic script (evidence-aligned)
 
-Use this script to isolate whether the first-build image quality is limited mainly by:
+Use this script so each test **isolates one variable** and you do not repeat work that this build has already ruled out.
 
-- chromatic/spherical aberration
-- focus error
-- alignment/decenter/pinch
-- eyepiece issues
-- smartphone afocal coupling artifacts
+**Build baseline (confirmed):** `106 mm` clear aperture (nominal), **`900 mm` objective focal length**, **~`100 mm` total focuser rack travel (±50 mm)**, 25 mm and 10 mm eyepieces.
 
-This script matches the current build baseline: **`106 mm` clear aperture**, **`900 mm` objective focal length (confirmed)**, **~`100 mm` total focuser rack travel (±50 mm confirmed)**, 25 mm and 10 mm eyepieces.
+---
 
-## 1) Preparation (2 minutes)
+## What this telescope has already demonstrated
 
-Tools:
+Do **not** treat the following as open questions—they are constraints on interpretation:
 
-- 25 mm eyepiece (start here)
-- 10 mm eyepiece (later)
-- temporary stop-down mask (70-80 mm clear opening)
-- small screwdriver for retaining ring preload check
-- phone adapter (if imaging) or handheld phone for comparison
+| Observation | Implication |
+|---------------|-------------|
+| **40 mm** front mask removes most halo | Marginal-ray **chromatic + spherical** (and related veiling) dominate at full aperture. |
+| **40 mm** mask costs a lot of detail / brightness | You are trading resolution and light grasp for wavefront quality; **40 mm is an extreme stop**, not a permanent operating mode. |
+| **Baffles** tried, little improvement on bright planets | Tube scatter is **not** the only problem; intrinsic objective + ghost paths still matter. |
+| **Eyepiece swap** (including microscope eyepiece) little change | **Do not spend the session chasing eyepieces** as the primary fix. |
+| **Eye and camera look similar** | Smartphone coupling is **secondary**; optimize **visual** first, then repeat the same checks for imaging if needed. |
 
-Conditions:
+Your goal in the field is: **pick the smallest stop that gives acceptable halo**, verify **ghosts**, then **mechanics**—in that order.
 
-- stable mount
-- target: bright star or distant point-like terrestrial light
-- allow optics to thermally settle for a few minutes
+**Budget ~25–30 minutes** for Phases A–C plus logging. Add Phase D if something still looks wrong after a sensible stop.
 
-Record fields for each step:
+---
 
-- visual sharpness score (1-5)
-- halo strength (1-5)
-- asymmetry direction/shape notes
-- phone-vs-eye mismatch (low/medium/high)
+## 0) Preparation
 
-## 1.1) Existing Observation to Carry Into This Test
+**Tools**
 
-Before running the script, note the already observed behavior:
+- 25 mm eyepiece (always start here; higher power magnifies defects and makes focus harder).
+- 10 mm eyepiece (optional; use only after 25 mm baseline is stable).
+- **Several** front masks or an adjustable iris: at minimum **full open**, **~80 mm**, **~70 mm**, **~60 mm**, **40 mm** (40 mm is a sanity re-check, not the only comparison).
+- Notebook or phone notes: you will log **halo (1–5)** and **detail (1–5)** at each stop.
+- Optional: yellow or green planetary filter, small screwdriver for retaining ring check.
 
-- `40 mm` front stop strongly reduces halo.
-- Full `106 mm` aperture shows strong glow/stray halo.
+**Conditions**
 
-Use this as a baseline clue that objective edge-ray aberration is likely a major contributor.
+- Stable mount; let the tube cool a few minutes.
+- **Targets that actually show your problem:** bright planet **or** Moon near terminator—not only a faint star. Your halo issue is high-contrast driven.
+- Same eyepiece and roughly same magnification when comparing stops (keep eyepiece fixed while changing masks).
 
-## 2) Baseline Focus Pass (2 minutes)
+**Logging (copy this table)**
 
-1. Insert `25 mm` eyepiece.
-2. Focus by eye only for best sharpness.
-3. Capture one phone image through eyepiece.
+| Step | Aperture | Halo 1–5 | Detail 1–5 | Ghosts Y/N | Notes |
+|------|----------|----------|--------------|--------------|-------|
+| A1   | 106 mm   |          |              |              |       |
+| B1   | 80 mm    |          |              |              |       |
+| B2   | 70 mm    |          |              |              |       |
+| B3   | 60 mm    |          |              |              |       |
+| B4   | 40 mm    |          |              |              |       |
 
-Interpretation:
+---
 
-- If visual is good but phone is poor: camera coupling is likely dominant.
-- If both are poor: continue; primary optical/mechanical issue likely.
+## Phase A — Visual baseline (critical, ~5 min)
 
-## 3) Stop-Down Test (2 minutes)
+**Do this by eye first.** Camera comes later only if you need photos.
 
-1. First confirm known `40 mm` mask behavior (sanity check).
-2. Then test `60 mm`, `70 mm`, and `80 mm` masks (if available).
-2. Re-focus with `25 mm`.
-3. Compare to baseline (eye first, then phone).
+1. Full aperture (`106 mm`). Install **25 mm** eyepiece.
+2. Point at your high-contrast target (planet or Moon).
+3. Rack focus slowly through the **entire** focuser travel. Note **two** best-looking positions if the image “wanders” (color focus split can look like double best focus).
+4. Pick the setting that gives the **best compromise** between sharp core and halo (not necessarily absolute minimum halo if the core goes mushy).
+5. Record row **A1** in the table (halo, detail, ghosts if any).
 
-Pass/fail meaning:
+**Interpretation**
 
-- **Strongly better** (less halo, cleaner edge): geometric aberrations (spherical/chromatic) are dominant.
-- **No material change**: focus/alignment/coupling likely dominates.
-- **Best compromise at 60-80 mm**: use that range as operational aperture for bright planets.
+- If halo is severe at any reasonable focus: proceed to Phase B; stopping down is the main lever for this objective class.
+- If you find two distinct “good” focus zones separated along the rack: note it—**longitudinal chromatic** focal shift can present that way in white light.
 
-## 4) Eyepiece Swap and Rotation Test (2 minutes)
+---
 
-1. Switch to `10 mm` eyepiece, refocus carefully.
-2. Note whether asymmetry increases.
-3. Rotate eyepiece by ~90 degrees and observe whether asymmetry rotates with it.
+## Phase B — Aperture sweep (critical, ~10–15 min)
 
-Interpretation:
+**Rule:** after **every** mask change, **re-focus from scratch** (do not trust the previous focus position).
 
-- Asymmetry rotates with eyepiece -> eyepiece contribution likely.
-- Asymmetry fixed in tube frame -> objective alignment/cell stress contribution likely.
+1. Keep **25 mm** eyepiece and the same target.
+2. For each clear aperture in order: **106 mm → 80 mm → 70 mm → 60 mm → 40 mm** (skip sizes you do not have; keep order coarse to fine).
+3. At each size:
+   - re-focus through full travel, pick best compromise again;
+   - log halo and detail in the table;
+   - note whether **halo drops faster than detail** (ideal) or detail collapses before halo improves (then suspect focus, alignment, or ghosts).
 
-## 5) Mechanical Stress and Centering Check (2 minutes)
+**How to read results**
 
-1. Lightly loosen retaining ring (no lens rattle, no preload).
-2. Verify objective appears centered in cell.
-3. Confirm focuser axis points to objective center.
-4. Re-run quick focus on 25 mm.
+- **Halo drops strongly between 106 and 70–80 mm** with acceptable detail → adopt **~70–80 mm** as your practical “bright object” operating stop until optics or mechanics are upgraded.
+- **Halo only really cleans at 40 mm** → objective residuals are large at the rim; your working stop will be a **strong** compromise until hardware changes.
+- **Little change from 106 down to 70 mm** → suspect **gross defocus, alignment, or a loose mask** (light leaks around mask, mask not centered on optical axis).
 
-Interpretation:
+**Critical mistake to avoid:** using **only** the 40 mm mask as proof “the telescope works” and never testing **60–80 mm**. The project goal is the **smallest** stop that balances halo and detail—not the smallest hole possible.
 
-- Improvement after relieving preload -> pinched/stressed lens was significant.
-- No improvement -> likely inherent objective correction limit and/or remaining alignment error.
+---
 
-## 6) Decision Matrix
+## Phase C — Ghost check (recommended, ~5 min)
 
-- **A:** Stop-down helps strongly + color halo persists  
-  -> Primary: chromatic + spherical residuals. Keep stopped-down for better visual quality.
+Still at a stop where the planet or Moon limb is bright enough to see artifacts (often full aperture or 80 mm).
 
-- **B:** Visual good, phone bad  
-  -> Primary: phone afocal alignment. Use rigid phone adapter and precise centering.
+1. Identify any **secondary bright spot** or smudge away from the real object.
+2. **Slew** so the target moves across the field (or rotate the tube in altitude slowly while watching).
 
-- **C:** Asymmetry fixed to tube, unaffected by eyepiece rotation  
-  -> Primary: objective/focuser alignment or lens seating issue.
+**Interpretation**
 
-- **D:** Asymmetry follows eyepiece rotation  
-  -> Primary: eyepiece issue.
+- Ghost **moves with the target** (stays in the same apparent place on the planet/Moon): likely **objective / eyepiece internal reflection** path—blacken edges, check tilted flats, add baffling near focal region, reduce stray reflections.
+- Artifact **stays fixed in the eyepiece field** while the sky moves: often **dust / smudge on eyepiece eye lens or phone lens**, or a **fixed reflection** in the eyepiece; clean optics and retry.
 
-## 7) Recommended Immediate Actions
+---
 
-1. Operate initially with a stop-down mask in the `60-80 mm` range (pick best compromise from Step 3).
-2. Lock best-focus workflow on 25 mm before switching to 10 mm.
-3. Keep objective retaining force minimal.
-4. Improve focuser-objective axis alignment using shims/jig.
-5. For imaging, use a fixed phone adapter and repeatable centering procedure.
+## Phase D — Mechanical checks (if Phases B–C are still confusing, ~5 min)
 
-## 8) Optional Extension (if you have 10 extra minutes)
+Do this **after** you understand aperture behavior, so you are not chasing mechanics while the dominant issue is full-aperture wavefront error.
 
-- Repeat the same test on a monochromatic/greenish target or with a mild green filter.
-- If image quality improves substantially, chromatic aberration is confirmed as a major limitation.
+1. **Objective retaining ring:** loosen slightly so there is **no pinch** (no deformation pressure on the rim); re-tighten only enough to prevent rattling.
+2. **Centering:** objective should look centered in the cell; focuser axis should point at objective center (visual estimate or template).
+3. Repeat **Phase A** at full aperture only.
+
+**Interpretation**
+
+- Clear improvement after relieving pinch → **mechanical stress** was a real contributor.
+- No change → do not keep iterating cell hardware; return to **stop strategy** and long-term **objective / baffle / coating** improvements.
+
+---
+
+## Phase E — Eyepiece and rotation (optional, low priority for this build)
+
+**Skip unless** you still suspect a bad eyepiece or a specific eyepiece-only artifact.
+
+1. With your best compromise aperture from Phase B, switch **25 mm → 10 mm**, refocus, compare halo/detail.
+2. Rotate the eyepiece ~90° in the focuser and see if asymmetric artifacts **rotate with the eyepiece**.
+
+**Interpretation**
+
+- Rotation tracks eyepiece → replace or service that eyepiece.
+- No rotation → back to objective / tube train.
+
+Given your prior **eyepiece swap test**, treat this phase as **confirmation only**, not the main diagnostic.
+
+---
+
+## Phase F — Spectral check (optional, ~5 min)
+
+On a bright planet or lunar limb, try a **yellow or green** filter (if available).
+
+- **Strong improvement** in fringe and haze → **chromatic** contribution is major; filters and slower effective f/# help; long-term fix is better color correction in the objective.
+- **Little change** → spherical / defocus / ghosts may dominate in that configuration; keep Phase B stop strategy.
+
+---
+
+## Decision summary (after you have filled the table)
+
+| Outcome pattern | Most likely cause | What to do next |
+|-----------------|-------------------|-----------------|
+| Halo improves a lot from 106 → 70–80 mm, detail still OK | Marginal-ray CA + SA | Operate bright targets at **70–80 mm**; improve mechanics; plan objective/filter upgrades. |
+| Halo only clean at 40 mm | Strong rim error or very fast effective beam at full aperture | Use **40 mm** only for demos; otherwise accept heavy stop or upgrade objective. |
+| Halo barely changes with mask | Focus, alignment, mask leak, or wrong mask placement | Re-check focus sweep, centered mask, and Phase D. |
+| Ghosts move with target | Internal reflections in OTA / eyepiece | Edge blackening, baffle geometry near focus, tilted uncoated surfaces; see `aberration-analysis.md`. |
+| Eye vs camera still differ a lot | Imaging path | Rigid adapter, centered exit pupil, exposure not clipping highlights. |
+
+---
+
+## What **not** to do (common time-wasters)
+
+1. **Do not** expect tube baffles alone to remove a **full-aperture colored halo** on Jupiter if Phase B shows strong aperture dependence—that is mostly **objective wavefront + color**, not wall scatter only.
+2. **Do not** lock the telescope to **40 mm** as the only “good” configuration without trying **60–80 mm** first.
+3. **Do not** spend most of the night swapping eyepieces for this symptom **before** completing Phase B (already de-prioritized by your prior tests).
+4. **Do not** compare stops at different magnifications or different targets without noting it—**change one variable at a time**.
+
+---
+
+## Link to deeper write-up
+
+For embedded images, evidence table, and physics discussion, see [`aberration-analysis.md`](aberration-analysis.md).
