@@ -3,6 +3,13 @@
 These are first-cut values for a 106/900 refractor.
 Update after measuring your actual focuser and tube.
 
+Related files:
+
+- [Main project guide](../README.md)
+- [Objective cell template](objective_cell.scad)
+- [Baffle ring template](baffle_ring.scad)
+- [Focuser drill jig template](focuser_drill_jig.scad)
+
 ## Tube Geometry
 - Tube length (objective seat to focuser flange): `805.0 mm`
 - Tube outer diameter (assumed): `120.0 mm`

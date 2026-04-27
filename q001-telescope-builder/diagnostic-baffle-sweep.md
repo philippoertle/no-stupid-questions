@@ -4,7 +4,7 @@ Use this script **after** the aperture sweep to test whether baffling improves g
 
 ## Prerequisite
 
-Run `diagnostic-aperture-sweep.md` first and choose:
+Run [`diagnostic-aperture-sweep.md`](diagnostic-aperture-sweep.md) first and choose:
 
 - `A_ref`: reference aperture (usually full `106 mm` and/or best compromise stop, e.g. `70-80 mm`).
 - `F_ref`: repeatable best-focus method.
@@ -36,8 +36,8 @@ If you only have one baffle setup, compare `B0` vs `B1`.
 - Same aperture per run (`A_ref`).
 - Same camera/exposure approach if capturing photos.
 - Same approximate altitude/time window where practical.
-- Optional CSV template: `templates/baffle-sweep-log.csv`
-- Optional quick reference: `templates/scoring-cheatsheet.md`
+- Optional CSV template: [`templates/baffle-sweep-log.csv`](templates/baffle-sweep-log.csv)
+- Optional quick reference: [`templates/scoring-cheatsheet.md`](templates/scoring-cheatsheet.md)
 
 ## Scoring scale reference (1-5)
 
@@ -140,8 +140,8 @@ Bands:
 Provide:
 
 - Completed baffle table.
-- Completed `templates/baffle-sweep-log.csv` (if used).
+- Completed [`templates/baffle-sweep-log.csv`](templates/baffle-sweep-log.csv) (if used).
 - Side-by-side images for `B0` vs best baffle state at same aperture and target.
 - One-line conclusion: "baffles improved X (yes/no), strongest effect on Y".
 
-Then update `aberration-analysis.md` with baffle evidence and confidence changes.
+Then update [`aberration-analysis.md`](aberration-analysis.md) with baffle evidence and confidence changes.

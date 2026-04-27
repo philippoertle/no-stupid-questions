@@ -37,22 +37,22 @@ The script prints:
 - Eyepiece performance table
 - Suggested baffle diameters at example positions
 
-It also generates plot images in `plots/`:
+It also generates plot images in [`plots/`](plots/):
 
-- `plots/beam_cone_and_baffles.png`
-- `plots/eyepiece_performance.png`
-- `plots/focus_budget.png`
-- `plots/template_tube_layout.png`
-- `plots/template_focuser_drill.png`
-- `plots/template_printed_parts_overview.png`
-- `data/planet-lid-with-4cm-hole.jpeg` (builder reference; see aberration analysis)
-- `data/planet-no-lid.jpeg` (builder reference; see aberration analysis)
-- `data/moon_lid-with-4cm-hole.png` (builder reference; see aberration analysis)
-- `data/moon-no-lid.jpeg` (builder reference; see aberration analysis)
+- [`plots/beam_cone_and_baffles.png`](plots/beam_cone_and_baffles.png)
+- [`plots/eyepiece_performance.png`](plots/eyepiece_performance.png)
+- [`plots/focus_budget.png`](plots/focus_budget.png)
+- [`plots/template_tube_layout.png`](plots/template_tube_layout.png)
+- [`plots/template_focuser_drill.png`](plots/template_focuser_drill.png)
+- [`plots/template_printed_parts_overview.png`](plots/template_printed_parts_overview.png)
+- [`data/planet-lid-with-4cm-hole.jpeg`](data/planet-lid-with-4cm-hole.jpeg) (builder reference; see aberration analysis)
+- [`data/planet-no-lid.jpeg`](data/planet-no-lid.jpeg) (builder reference; see aberration analysis)
+- [`data/moon_lid-with-4cm-hole.png`](data/moon_lid-with-4cm-hole.png) (builder reference; see aberration analysis)
+- [`data/moon-no-lid.jpeg`](data/moon-no-lid.jpeg) (builder reference; see aberration analysis)
 
 It writes template dimensions to:
 
-- `templates/template_dimensions.md`
+- [`templates/template_dimensions.md`](templates/template_dimensions.md)
 
 ## 3) Optical Model Used
 
@@ -75,7 +75,7 @@ Core equations:
 
 - Objective focal length **`f_obj = 900 mm` is confirmed** for the first build. Clear aperture is still treated as **`D = 106 mm`** unless you measure the clear aperture at the cell.
 - Focuser travel is **`100 mm` total** (builder reports **±50 mm** from a neutral focus position).  
-  If your hardware is only **5 cm total** travel (not ±5 cm), set `focuser_travel_mm = 50.0` in `model.py` and rerun `python model.py`.
+  If your hardware is only **5 cm total** travel (not ±5 cm), set `focuser_travel_mm = 50.0` in [`model.py`](model.py) and rerun `python model.py`.
 - Focuser flange-to-field-stop (fully in) is initially estimated in code as `70 mm`.
 - Design target is to place infinity focus near mid travel (~50 mm out from fully in).
 
@@ -84,7 +84,7 @@ When you measure your actual focuser geometry, update:
 - `focuser_flange_to_field_stop_infocus_mm`
 - (optionally) `focus_margin_mm`
 
-in `TelescopeConfig` inside `model.py`.
+in `TelescopeConfig` inside [`model.py`](model.py).
 
 ## 5) Generated Physics Illustrations
 
@@ -114,12 +114,12 @@ Illustrates the confirmed focuser travel range and why targeting infinity focus 
 
 ## 6) Cut/Drill Templates + 3D Printed Jigs
 
-This project now includes first-pass printable templates in `templates/`:
+This project now includes first-pass printable templates in [`templates/`](templates/):
 
-- `templates/focuser_drill_jig.scad` - tube clamp jig with focuser and bolt-hole guides
-- `templates/baffle_ring.scad` - parametric baffle ring
-- `templates/objective_cell.scad` - objective lens cell + retaining ring preview
-- `templates/template_dimensions.md` - generated dimension summary
+- [`templates/focuser_drill_jig.scad`](templates/focuser_drill_jig.scad) - tube clamp jig with focuser and bolt-hole guides
+- [`templates/baffle_ring.scad`](templates/baffle_ring.scad) - parametric baffle ring
+- [`templates/objective_cell.scad`](templates/objective_cell.scad) - objective lens cell + retaining ring preview
+- [`templates/template_dimensions.md`](templates/template_dimensions.md) - generated dimension summary
 
 ### Tube cut and baffle placement template
 
@@ -135,7 +135,7 @@ Use this as the axial reference map:
 
 ![Focuser drill template](plots/template_focuser_drill.png)
 
-This graphic maps directly to `focuser_drill_jig.scad`:
+This graphic maps directly to [`focuser_drill_jig.scad`](templates/focuser_drill_jig.scad):
 
 - center circle = main focuser hole
 - 4 corner circles = mounting bolt holes
@@ -207,10 +207,10 @@ This includes:
 - separated experimental protocols for aperture effects vs baffling effects
 - a mitigation sequence (stop-down, focus, alignment, camera coupling checks)
 - script-specific logging tables and CSV templates:
-  - `templates/aperture-sweep-log.csv`
-  - `templates/baffle-sweep-log.csv`
+  - [`templates/aperture-sweep-log.csv`](templates/aperture-sweep-log.csv)
+  - [`templates/baffle-sweep-log.csv`](templates/baffle-sweep-log.csv)
 - field quick-reference card:
-  - `templates/scoring-cheatsheet.md`
+  - [`templates/scoring-cheatsheet.md`](templates/scoring-cheatsheet.md)
 - explicit quantitative 1-5 scoring anchors (what counts as low, moderate, high)
 - an **evidence table** (image → artifacts → likely modes → confidence) in `aberration-analysis.md`
 

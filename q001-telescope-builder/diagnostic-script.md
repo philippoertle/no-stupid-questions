@@ -12,4 +12,7 @@ Recommended execution order:
 
 1. Run **Script A** first and determine `A_ref` (reference aperture).
 2. Run **Script B** using the same target and `A_ref`.
-3. Update [`aberration-analysis.md`](aberration-analysis.md) with both result tables before revising conclusions.
+3. Fill the CSV logs:
+   - [`templates/aperture-sweep-log.csv`](templates/aperture-sweep-log.csv)
+   - [`templates/baffle-sweep-log.csv`](templates/baffle-sweep-log.csv)
+4. Update [`aberration-analysis.md`](aberration-analysis.md) with both result tables before revising conclusions.

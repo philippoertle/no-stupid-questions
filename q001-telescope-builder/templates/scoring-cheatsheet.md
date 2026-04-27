@@ -2,6 +2,12 @@
 
 Use this during observations to keep scoring consistent across runs.
 
+Related protocols:
+
+- [Aperture sweep script](../diagnostic-aperture-sweep.md)
+- [Baffle sweep script](../diagnostic-baffle-sweep.md)
+- [Aberration analysis](../aberration-analysis.md)
+
 ## Quick interpretation
 
 - **Low (good for artifact scores):** `1-2`

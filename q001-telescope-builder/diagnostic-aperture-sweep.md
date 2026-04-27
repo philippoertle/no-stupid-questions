@@ -28,8 +28,8 @@ Use this script to isolate how much of the halo/veiling problem is driven by **a
 - 25 mm eyepiece (mandatory for sweep), 10 mm optional confirmation.
 - Notebook / table for scores.
 - Optional: yellow/green filter for extension test.
-- Optional CSV template: `templates/aperture-sweep-log.csv`
-- Optional quick reference: `templates/scoring-cheatsheet.md`
+- Optional CSV template: [`templates/aperture-sweep-log.csv`](templates/aperture-sweep-log.csv)
+- Optional quick reference: [`templates/scoring-cheatsheet.md`](templates/scoring-cheatsheet.md)
 
 ## Scoring scale reference (1-5)
 
@@ -100,9 +100,9 @@ Interpretation bands:
 Provide:
 
 - Completed table.
-- Completed `templates/aperture-sweep-log.csv` (if used).
+- Completed [`templates/aperture-sweep-log.csv`](templates/aperture-sweep-log.csv) (if used).
 - One representative photo at `106 mm`.
 - One representative photo at chosen operational stop.
 - A one-line conclusion: "best compromise aperture = X mm".
 
-Then run Script B (`diagnostic-baffle-sweep.md`) using this chosen aperture as reference.
+Then run Script B ([`diagnostic-baffle-sweep.md`](diagnostic-baffle-sweep.md)) using this chosen aperture as reference.

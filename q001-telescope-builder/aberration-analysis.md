@@ -72,10 +72,10 @@ Use this table when discussing results with the builder or when deciding what to
 
 | Image file | Observed artifacts | Likely optical mode(s) | Confidence |
 |------------|-------------------|------------------------|------------|
-| `planet-no-lid.jpeg` | Large blue/violet halo; diffuse glow; secondary bright spots (ghost chain) | Longitudinal + lateral **chromatic**; **spherical** / zone residuals at full aperture; **internal reflections** (ghosts) | **High** |
-| `planet-lid-with-4cm-hole.jpeg` | Halo strongly reduced; planet still bright; moons visible; some elongation or residual softness | Same modes **suppressed** by stop-down; residual may be tracking, slight defocus, or remaining CA/SA | **High** |
-| `moon-no-lid.jpeg` | Color fringes on limb; veiling / low contrast on terminator; possible faint ghost in dark sky | **Chromatic** + **spherical** / defocus across color; optional **ghost** path | **Medium to high** |
-| `moon_lid-with-4cm-hole.png` | Cleaner limb edges; less color haze; dimmer / softer fine detail vs no-lid | Stop-down trims marginal rays; **diffraction** and lower étendue limit detail | **High** |
+| [`planet-no-lid.jpeg`](data/planet-no-lid.jpeg) | Large blue/violet halo; diffuse glow; secondary bright spots (ghost chain) | Longitudinal + lateral **chromatic**; **spherical** / zone residuals at full aperture; **internal reflections** (ghosts) | **High** |
+| [`planet-lid-with-4cm-hole.jpeg`](data/planet-lid-with-4cm-hole.jpeg) | Halo strongly reduced; planet still bright; moons visible; some elongation or residual softness | Same modes **suppressed** by stop-down; residual may be tracking, slight defocus, or remaining CA/SA | **High** |
+| [`moon-no-lid.jpeg`](data/moon-no-lid.jpeg) | Color fringes on limb; veiling / low contrast on terminator; possible faint ghost in dark sky | **Chromatic** + **spherical** / defocus across color; optional **ghost** path | **Medium to high** |
+| [`moon_lid-with-4cm-hole.png`](data/moon_lid-with-4cm-hole.png) | Cleaner limb edges; less color haze; dimmer / softer fine detail vs no-lid | Stop-down trims marginal rays; **diffraction** and lower étendue limit detail | **High** |
 | *(cross-cut)* Eye vs camera match | Same defects visible visually and on camera | Primary cause is **telescope + train**, not smartphone-only artifacts | **High** (per builder report) |
 
 **How to read the table:** if a row’s “likely modes” improve when you only change aperture (same target, same eyepiece), treat that as evidence those modes are **aperture-driven** (marginal rays). If a symptom persists even at small stops, prioritize **alignment, ghosts, or focus**.
