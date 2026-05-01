@@ -20,3 +20,13 @@ Recommended execution order:
    - [`templates/aperture-sweep-log.csv`](templates/aperture-sweep-log.csv)
    - [`templates/baffle-sweep-log.csv`](templates/baffle-sweep-log.csv)
 4. Update [`aberration-analysis.md`](aberration-analysis.md) with both result tables before revising conclusions.
+
+## Condition control requirement (applies to both scripts)
+
+For interpretable results, keep imaging conditions **near-identical** between compared rows:
+
+- same target class and similar altitude,
+- same eyepiece/camera/exposure approach,
+- similar transparency and seeing (no step-to-step cloud swings).
+
+If conditions drift, record it in CSV `comments_observations` and treat those rows as lower-confidence.

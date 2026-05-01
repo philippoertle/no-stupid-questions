@@ -21,6 +21,7 @@ from __future__ import annotations
 
 import argparse
 import csv
+import re
 import sys
 from pathlib import Path
 
@@ -33,6 +34,73 @@ def _parse_float(s: str) -> float | None:
     t = (s or "").strip()
     if not t:
         return None
+
+
+def _row_comments(row: dict[str, str]) -> str:
+    """Prefer explicit comments_observations, fall back to notes."""
+    return ((row.get("comments_observations") or "") + " " + (row.get("notes") or "")).strip()
+
+
+def _cloud_flag(text: str) -> bool:
+    return bool(re.search(r"\b(cloud|clouds|cloudy|cirrus|haze|fog|mist|overcast)\b", text, flags=re.I))
+
+
+def _warn_condition_variability_aperture(csv_path: Path) -> None:
+    seeing_vals: list[float] = []
+    flagged_steps: list[str] = []
+
+    with csv_path.open(newline="", encoding="utf-8") as f:
+        reader = csv.DictReader(f)
+        for row in reader:
+            step = (row.get("step") or "").strip() or "?"
+            s = _parse_float(row.get("seeing_1to5", "") or "")
+            if s is not None:
+                seeing_vals.append(s)
+            if _cloud_flag(_row_comments(row)):
+                flagged_steps.append(step)
+
+    if seeing_vals:
+        spread = max(seeing_vals) - min(seeing_vals)
+        if spread >= 1.0:
+            print(
+                f"WARNING: seeing_1to5 spread is {spread:.1f} in {csv_path.name}. "
+                "Comparisons are less reliable unless conditions were near-identical."
+            )
+    if flagged_steps:
+        uniq = ", ".join(sorted(set(flagged_steps)))
+        print(
+            f"WARNING: weather/transparency notes detected at steps [{uniq}] in {csv_path.name}. "
+            "Treat those rows as condition-limited (e.g., clouds/haze)."
+        )
+
+
+def _warn_condition_variability_baffle(csv_path: Path) -> None:
+    seeing_vals: list[float] = []
+    flagged_steps: list[str] = []
+
+    with csv_path.open(newline="", encoding="utf-8") as f:
+        reader = csv.DictReader(f)
+        for row in reader:
+            step = (row.get("step") or "").strip() or "?"
+            s = _parse_float(row.get("seeing_1to5", "") or "")
+            if s is not None:
+                seeing_vals.append(s)
+            if _cloud_flag(_row_comments(row)):
+                flagged_steps.append(step)
+
+    if seeing_vals:
+        spread = max(seeing_vals) - min(seeing_vals)
+        if spread >= 1.0:
+            print(
+                f"WARNING: seeing_1to5 spread is {spread:.1f} in {csv_path.name}. "
+                "Baffle-state comparisons require near-identical sky conditions."
+            )
+    if flagged_steps:
+        uniq = ", ".join(sorted(set(flagged_steps)))
+        print(
+            f"WARNING: weather/transparency notes detected at steps [{uniq}] in {csv_path.name}. "
+            "Treat those rows as condition-limited (e.g., clouds/haze)."
+        )
     try:
         return float(t)
     except ValueError:
@@ -167,12 +235,14 @@ def main() -> int:
 
     if args.aperture_csv:
         p = args.aperture_csv if args.aperture_csv.is_absolute() else root / args.aperture_csv
+        _warn_condition_variability_aperture(p)
         extra = plot_aperture_scores_csv(p, plots_dir)
         if extra:
             print(f"  {extra}")
 
     if args.baffle_csv:
         p = args.baffle_csv if args.baffle_csv.is_absolute() else root / args.baffle_csv
+        _warn_condition_variability_baffle(p)
         extra = plot_baffle_scores_csv(p, plots_dir)
         if extra:
             print(f"  {extra}")

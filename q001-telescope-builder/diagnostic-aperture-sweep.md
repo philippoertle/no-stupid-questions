@@ -21,8 +21,10 @@ Terminology: see [`optical-artifacts-glossary.md`](optical-artifacts-glossary.md
 1. Change **one variable at a time** (aperture only in this script).
 2. Use **same target** for the whole sweep (planet or Moon near the [terminator](optical-artifacts-glossary.md#moon-terminator)—sunlit/night boundary).
 3. Use **same eyepiece** (25 mm) for the sweep.
-4. **Re-focus from scratch after every aperture change**.
-5. Log each step before moving on.
+4. Keep **imaging conditions near-identical** across steps (cloud cover/transparency, target altitude, exposure approach, and time window).
+5. **Re-focus from scratch after every aperture change**.
+6. Log each step before moving on.
+7. If conditions drift (e.g., clouds for early rows), mark those rows in `comments_observations` and treat them as lower-confidence evidence.
 
 ## Equipment
 
@@ -75,6 +77,9 @@ Interpretation bands:
 | A4 | 60 mm | | | | |
 | A5 | 40 mm | | | | |
 
+CSV fields include both `comments_observations` and `notes`.  
+Use `comments_observations` for transient capture issues (clouds, haze spikes, gust vibration, passing thin cirrus, dew onset), so comparisons can be filtered later.
+
 ## Procedure
 
 1. Start full aperture (`106 mm`) on chosen target with `25 mm` eyepiece.
@@ -83,6 +88,7 @@ Interpretation bands:
 4. Repeat at `80 mm`, then `70 mm`, then `60 mm`, then `40 mm`:
    - install mask,
    - re-focus fully,
+   - verify transparency/seeing remain close to previous step,
    - record one row each.
 5. Optional: repeat your best two aperture settings with `10 mm` eyepiece to confirm trend.
 

@@ -38,6 +38,7 @@ If you only have one baffle setup, compare `B0` vs `B1`.
 - Same aperture per run (`A_ref`).
 - Same camera/exposure approach if capturing photos.
 - Same approximate altitude/time window where practical.
+- Same or very similar transparency/seeing conditions across states (avoid comparing through changing clouds).
 - Optional CSV template: [`templates/baffle-sweep-log.csv`](templates/baffle-sweep-log.csv)
 - Optional quick reference: [`templates/scoring-cheatsheet.md`](templates/scoring-cheatsheet.md)
 
@@ -115,7 +116,8 @@ Bands:
 2. Test `B0` first:
    - focus with same method as Script A,
    - inspect bright limb/planet for halo, veiling, and ghost spots,
-   - record scores and capture one representative frame.
+   - record scores and capture one representative frame,
+   - write any condition drift in `comments_observations` (e.g., "thin cloud", "transparency dropped").
 3. Install `B1`, repeat exactly.
 4. Install `B2` (if available), repeat exactly.
 5. Optional confirmation:
@@ -131,6 +133,8 @@ Bands:
   - prioritize optical/mechanical correction before more baffle iteration.
 - Improvement only at one aperture:
   - baffle geometry may be clipping or ineffective at other cones; revisit baffle diameters/positions.
+- Scores shift mainly with weather/transparency notes:
+  - evidence is condition-limited; repeat under steadier sky before drawing optical conclusions.
 
 ## What baffling can and cannot prove
 

@@ -36,6 +36,8 @@ Additional report from first-light testing:
 - Eyepiece swap (including a microscope eyepiece) did not materially change the effect.
 - Visual and camera impressions are reported to be very similar.
 
+Related update: one through-the-tube moon photo discussed later was captured with a `60 mm` stop, so it should be treated as a mixed aperture+stray-light case rather than a full-aperture tube-only indicator. See [`retrofit-stray-light-plan.md`](retrofit-stray-light-plan.md) for the updated interpretation and the 4-frame (`106 mm` vs `60 mm`, with/without temporary flocking) A/B protocol.
+
 Interpretation:
 
 - This behavior strongly indicates an **objective-dominated, edge-ray problem** (spherical/chromatic residuals and possible lens-edge scatter), not just eyepiece quality.

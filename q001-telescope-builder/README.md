@@ -301,11 +301,14 @@ This includes:
 - script-specific logging tables and CSV templates:
   - [`templates/aperture-sweep-log.csv`](templates/aperture-sweep-log.csv)
   - [`templates/baffle-sweep-log.csv`](templates/baffle-sweep-log.csv)
+  - use CSV `comments_observations` to note condition drift (clouds/haze/transparency changes)
 - optional score plots from those logs: [`scripts/plot_diagnostic_sweeps.py`](scripts/plot_diagnostic_sweeps.py) (see **Section 2**)
 - field quick-reference card:
   - [`templates/scoring-cheatsheet.md`](templates/scoring-cheatsheet.md)
 - explicit quantitative 1-5 scoring anchors (what counts as low, moderate, high)
 - an **evidence table** (image → artifacts → likely modes → confidence) in `aberration-analysis.md`
+
+For interpretable comparisons, keep imaging conditions near-identical between rows (target altitude/time window, transparency, and seeing). Condition-limited rows should be flagged in `comments_observations` and treated as lower confidence.
 
 ## 12) What to Improve Next
 
