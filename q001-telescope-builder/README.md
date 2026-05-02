@@ -10,6 +10,7 @@ References:
 
 - [Altair 1.25 inch Eyepiece Set (10 mm + 25 mm)](https://altairastro.com/125-inch-eyepiece-set-pl-10mm--25mm-11799-p.asp)
 - [106 mm DIY objective listing](https://www.ebay.fr/itm/174771591801?utm_source=chatgpt.com)
+- [Camera and imaging (prime focus, Barlow, Pi/laptop, CSV experiments)](camera-imaging-guide.md)
 
 ## 1) Project Goal
 
@@ -144,6 +145,12 @@ These are generated directly by the model and can be refreshed anytime by rerunn
 python model.py
 ```
 
+For the visual-vs-camera coupling schematic (PNG + SVG), run:
+
+```bash
+python scripts/plot_visual_vs_camera_coupling.py
+```
+
 ### Optical cone and baffles
 
 ![Converging cone and baffles](plots/beam_cone_and_baffles.png)
@@ -155,6 +162,14 @@ Shows the paraxial cone from the objective to focal plane and the suggested mini
 ![Eyepiece performance](plots/eyepiece_performance.png)
 
 Compares magnification, exit pupil, and approximate true field for your 25 mm and 10 mm eyepieces on a 900 mm objective.
+
+### Visual vs camera coupling (same optics, different detector)
+
+![Visual vs camera coupling (PNG)](plots/visual_vs_camera_coupling.png)
+
+![Visual vs camera coupling (SVG)](plots/visual_vs_camera_coupling.svg)
+
+Shows why **visual observing** uses an eyepiece (to convert the intermediate image into a comfortable angular view for the eye) while **prime-focus imaging** places the sensor directly at the telescope focal plane (no eyepiece required).
 
 ### Focus budget placement
 
