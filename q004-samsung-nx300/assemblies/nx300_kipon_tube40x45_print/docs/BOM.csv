@@ -1,0 +1,17 @@
+item_no,part_id,description,qty,source,file_or_reference,notes
+1,P-001,Samsung NX300 camera body,1,purchased,n/a,User-owned camera body
+2,P-002,Kipon 19556 Samsung NX to T2 adapter,1,purchased,https://www.walimex.ch/product_info.php?products_id=2443,Camera-side adapter
+3,PR-001,Unified printed adapter Kipon->tube40x45,1,printed,parts/kipon_to_tube40x45_adapter/print/source/kipon_to_tube40x45_unified_cadquery.py,Primary one-piece print part
+4,PR-001-STEP,Unified printed adapter STEP,1,generated,parts/kipon_to_tube40x45_adapter/print/exports/kipon_to_tube40x45_unified.step,For CAD/CAM/reference
+5,PR-001-STL,Unified printed adapter STL,1,generated,parts/kipon_to_tube40x45_adapter/print/exports/kipon_to_tube40x45_unified.stl,For slicing/printing
+6,DRW-PR-001,Unified printed adapter drawing PDF,1,generated,parts/kipon_to_tube40x45_adapter/print/exports/kipon_to_tube40x45_unified_drawing.pdf,Detailed dimensions and print notes
+7,H-001,M3 clamp screw (16-20 mm),1,hardware store,n/a,Clamp tightening screw
+8,H-002,M3 hex nut,1,hardware store,n/a,Nut trap for clamp
+9,H-003,M4 radial lock screw (optional),0-3,hardware store,n/a,Optional tube-side locking
+10,PR-TEST-NEG20,Fit test ring minus0p20,1,generated,parts/kipon_fit_test_ring/print/exports/t2_kipon_fit_test_ring_minus0p20.stl,Use for bore-fit calibration
+11,PR-TEST-NEG10,Fit test ring minus0p10,1,generated,parts/kipon_fit_test_ring/print/exports/t2_kipon_fit_test_ring_minus0p10.stl,Use for bore-fit calibration
+12,PR-TEST-NOM,Fit test ring nominal,1,generated,parts/kipon_fit_test_ring/print/exports/t2_kipon_fit_test_ring_nominal.stl,Use for bore-fit calibration
+13,PR-TEST-POS10,Fit test ring plus0p10,1,generated,parts/kipon_fit_test_ring/print/exports/t2_kipon_fit_test_ring_plus0p10.stl,Use for bore-fit calibration
+14,PR-TEST-POS20,Fit test ring plus0p20,1,generated,parts/kipon_fit_test_ring/print/exports/t2_kipon_fit_test_ring_plus0p20.stl,Use for bore-fit calibration
+15,DRW-TEST-PACK,Fit test ring drawings pack PDF,1,generated,parts/kipon_fit_test_ring/print/exports/t2_kipon_fit_test_ring_drawings.pdf,Includes all variants
+16,P-003,Telescope tube interface (ID40/OD45),1,existing hardware,n/a,Mechanical receiving interface

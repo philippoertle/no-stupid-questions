@@ -28,7 +28,8 @@ See:
 ## Project layout
 
 - `reports/` literature and sourcing reports
-- `cad/cnc/source/` CNC CAD generators/scripts
-- `cad/cnc/exports/` CNC outputs (`.step`, `.stl`, drawing PDF)
-- `cad/print/source/` home 3D-print CAD sources (next step)
-- `cad/print/exports/` 3D-print exports (`.stl`, `.3mf`, slicer-ready)
+- `assemblies/` assembly-level docs (hierarchy, BOM, build context)
+- `parts/` part-level CAD organized by part and manufacturing method
+  - `parts/m42_t2_flange/cnc/{source,exports}`
+  - `parts/kipon_to_tube40x45_adapter/print/{source,exports}`
+  - `parts/kipon_fit_test_ring/print/{source,exports}`
