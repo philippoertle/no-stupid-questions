@@ -21,4 +21,14 @@
 
 ## Full report
 
-See `literature-search-report.md` in this folder.
+See:
+- `reports/literature-search-report.md`
+- `reports/literature-search-report-t2-flat-mount.md`
+
+## Project layout
+
+- `reports/` literature and sourcing reports
+- `cad/cnc/source/` CNC CAD generators/scripts
+- `cad/cnc/exports/` CNC outputs (`.step`, `.stl`, drawing PDF)
+- `cad/print/source/` home 3D-print CAD sources (next step)
+- `cad/print/exports/` 3D-print exports (`.stl`, `.3mf`, slicer-ready)
